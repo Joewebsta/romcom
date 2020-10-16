@@ -37,6 +37,20 @@ function displayRandomCover() {
 }
 
 function showFormView() {
+  if (!formView.classList.contains('hidden')) return;
+
+  toggleHidden(
+    homeView, 
+    formView, 
+    homeBtn, 
+    randomCoverBtn, 
+    saveCoverBtn
+  );
+}
+
+function showHomeView() {
+  if (!homeView.classList.contains('hidden')) return;
+
   toggleHidden(
     homeView, 
     formView, 
@@ -63,3 +77,4 @@ function getRandomIndex(array) {
 document.addEventListener('onload', updateCover(currentCover));
 randomCoverBtn.addEventListener('click', displayRandomCover);
 makeNewBtn.addEventListener('click', showFormView);
+homeBtn.addEventListener('click', showHomeView);
