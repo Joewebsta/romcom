@@ -37,19 +37,23 @@ function displayRandomCover() {
 }
 
 function showFormView() {
-  toggleHidden(homeView);
-  toggleHidden(formView);
-  toggleHidden(homeBtn);
-  toggleHidden(randomCoverBtn);
-  toggleHidden(saveCoverBtn);
+  toggleHidden(
+    homeView, 
+    formView, 
+    homeBtn, 
+    randomCoverBtn, 
+    saveCoverBtn
+  );
 }
 
-function toggleHidden(elem){
-  if (elem.classList.contains('hidden')) {
-    elem.classList.remove('hidden');
-  } else {
-    elem.classList.add('hidden');
-  }
+function toggleHidden(){
+  Array.from(arguments).forEach(elem => {
+    if (elem.classList.contains('hidden')) {
+      elem.classList.remove('hidden');
+    } else {
+      elem.classList.add('hidden');
+    }
+  })
 }
 
 function getRandomIndex(array) {
