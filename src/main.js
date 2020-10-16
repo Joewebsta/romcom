@@ -9,14 +9,13 @@ let tagline2 = document.querySelector('.js-tagline-2');
 // let savedCovers = [
 //   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 // ];
-// let currentCover;
+let currentCover = createCover();
 
 // Add your event listeners here 👇
 document.addEventListener('onload', loadMainCover());
 
 // Create your event handlers and other functions here 👇
 function loadMainCover() {
-  let currentCover = createCover();
   updateCover(currentCover);
 }
 
@@ -34,7 +33,7 @@ function createCover() {
   return new Cover(coverImgSrc, title, descriptor1, descriptor2);
 }
 
-function updateCover(currentCover) {
+function updateCover() {
   coverImage.src = currentCover.cover;
   coverTitle.textContent = currentCover.title;
   tagline1.textContent = currentCover.tagline1;
