@@ -17,6 +17,9 @@ document.addEventListener('onload', loadMainCoverData());
 // Create your event handlers and other functions here 👇
 function loadMainCoverData() {
   coverImage.src = covers[getRandomIndex(covers)];
+  title.textContent = titles[getRandomIndex(titles)];
+  tagline1.textContent = descriptors[getRandomIndex(descriptors)];
+  tagline2.textContent = descriptors[getRandomIndex(descriptors)];
 }
 
 // We've provided one function to get you started
