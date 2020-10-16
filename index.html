@@ -10,13 +10,13 @@
 
 <body>
   <section class="controls">
-    <button class="home-button hidden">Home</button>
-    <button class="random-cover-button js-random-btn">Show New Random Cover</button>
-    <button class="save-cover-button">Save Cover</button>
-    <button class="view-saved-button">View Saved Covers</button>
-    <button class="make-new-button">Make Your Own Cover</button>
+    <button class="home-button js-home-button hidden">Home</button>
+    <button class="random-cover-button js-random-cover-btn">Show New Random Cover</button>
+    <button class="save-cover-button js-save-cover-btn">Save Cover</button>
+    <button class="view-saved-button js-view-saved-btn">View Saved Covers</button>
+    <button class="make-new-button js-make-new-btn">Make Your Own Cover</button>
   </section>
-  <section class="view home-view">
+  <section class="view home-view js-home-view">
     <section class="main-cover">
       <img class="cover-image js-cover-image">
       <h2 class="cover-title js-cover-title">Windswept Hearts</h2>
@@ -29,7 +29,7 @@
   <section class="view saved-view hidden">
     <section class="saved-covers-section"></section>
   </section>
-  <section class="view form-view hidden">
+  <section class="view form-view js-form-view hidden">
     <form>
       <label for="cover">Cover</label>
       <input class="user-cover" type="text" id="cover" />

@@ -2,7 +2,15 @@ let coverImage = document.querySelector('.js-cover-image');
 let coverTitle = document.querySelector('.js-cover-title');
 let tagline1 = document.querySelector('.js-tagline-1');
 let tagline2 = document.querySelector('.js-tagline-2');
-let randomBtn = document.querySelector('.js-random-btn'); 
+
+let homeView = document.querySelector('.js-home-view');
+let formView = document.querySelector('.js-form-view');
+
+let homeBtn = document.querySelector('.js-home-button'); 
+let randomCoverBtn = document.querySelector('.js-random-cover-btn'); 
+let makeNewBtn = document.querySelector('.js-make-new-btn');
+let viewSavedBtn = document.querySelector('.js-view-saved-btn');
+let saveCoverBtn = document.querySelector('.js-save-cover-btn');
 
 let currentCover = createCover();
 // let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
@@ -23,9 +31,25 @@ function updateCover() {
   tagline2.textContent = currentCover.tagline2;
 }
 
-function showRandomCover() {
+function displayRandomCover() {
   currentCover = createCover();
   updateCover();
+}
+
+function showFormView() {
+  toggleHidden(homeView);
+  toggleHidden(formView);
+  toggleHidden(homeBtn);
+  toggleHidden(randomCoverBtn);
+  toggleHidden(saveCoverBtn);
+}
+
+function toggleHidden(elem){
+  if (elem.classList.contains('hidden')) {
+    elem.classList.remove('hidden');
+  } else {
+    elem.classList.add('hidden');
+  }
 }
 
 function getRandomIndex(array) {
@@ -33,4 +57,5 @@ function getRandomIndex(array) {
 }
 
 document.addEventListener('onload', updateCover(currentCover));
-randomBtn.addEventListener('click', showRandomCover);
+randomCoverBtn.addEventListener('click', displayRandomCover);
+makeNewBtn.addEventListener('click', showFormView);

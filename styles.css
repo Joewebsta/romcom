@@ -47,7 +47,7 @@ body {
 
 .cover-image,
 .overlay {
-  /* object-fit: cover; */
+  object-fit: cover;
   height: 100%;
   width: 100%;
 }
