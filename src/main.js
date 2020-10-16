@@ -1,6 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 let coverImage = document.querySelector('.js-cover-image');
-let title = document.querySelector('.js-cover-title');
+let coverTitle = document.querySelector('.js-cover-title');
 let tagline1 = document.querySelector('.js-tagline-1');
 let tagline2 = document.querySelector('.js-tagline-2');
 
@@ -12,17 +12,31 @@ let tagline2 = document.querySelector('.js-tagline-2');
 // let currentCover;
 
 // Add your event listeners here 👇
-document.addEventListener('onload', loadMainCoverData());
+document.addEventListener('onload', loadMainCover());
 
 // Create your event handlers and other functions here 👇
-function loadMainCoverData() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  title.textContent = titles[getRandomIndex(titles)];
-  tagline1.textContent = descriptors[getRandomIndex(descriptors)];
-  tagline2.textContent = descriptors[getRandomIndex(descriptors)];
+function loadMainCover() {
+  let currentCover = createCover();
+  updateCover(currentCover);
 }
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function createCover() {
+  let coverImgSrc = covers[getRandomIndex(covers)];
+  let title = titles[getRandomIndex(titles)];
+  let descriptor1 = descriptors[getRandomIndex(descriptors)];
+  let descriptor2 = descriptors[getRandomIndex(descriptors)];
+  
+  return new Cover(coverImgSrc, title, descriptor1, descriptor2);
+}
+
+function updateCover(currentCover) {
+  coverImage.src = currentCover.cover;
+  coverTitle.textContent = currentCover.title;
+  tagline1.textContent = currentCover.tagline1;
+  tagline2.textContent = currentCover.tagline2;
 }
