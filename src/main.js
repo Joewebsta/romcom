@@ -1,28 +1,11 @@
-// Create variables targetting the relevant DOM elements here 👇
 let coverImage = document.querySelector('.js-cover-image');
 let coverTitle = document.querySelector('.js-cover-title');
 let tagline1 = document.querySelector('.js-tagline-1');
 let tagline2 = document.querySelector('.js-tagline-2');
+let randomBtn = document.querySelector('.js-random-btn'); 
 
-
-// We've provided a few variables below
-// let savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
 let currentCover = createCover();
-
-// Add your event listeners here 👇
-document.addEventListener('onload', loadMainCover());
-
-// Create your event handlers and other functions here 👇
-function loadMainCover() {
-  updateCover(currentCover);
-}
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+// let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
 
 function createCover() {
   let coverImgSrc = covers[getRandomIndex(covers)];
@@ -39,3 +22,15 @@ function updateCover() {
   tagline1.textContent = currentCover.tagline1;
   tagline2.textContent = currentCover.tagline2;
 }
+
+function showRandomCover() {
+  currentCover = createCover();
+  updateCover();
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+document.addEventListener('onload', updateCover(currentCover));
+randomBtn.addEventListener('click', showRandomCover);
