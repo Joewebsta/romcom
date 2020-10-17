@@ -14,10 +14,10 @@ let viewSavedBtn = document.querySelector('.js-view-saved-btn');
 let saveCoverBtn = document.querySelector('.js-save-cover-btn');
 let createNewBookBtn = document.querySelector('.js-create-new-book-btn')
 
-let userCover = document.querySelector('js-user-cover');
-let userTitle = document.querySelector('js-user-title');
-let userDesc1 = document.querySelector('js-user-desc1');
-let userDesc2 = document.querySelector('js-user-desc2');
+let userCover = document.querySelector('.js-user-cover');
+let userTitle = document.querySelector('.js-user-title');
+let userDesc1 = document.querySelector('.js-user-desc1');
+let userDesc2 = document.querySelector('.js-user-desc2');
 
 let currentCover = createCover();
 // let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
@@ -66,12 +66,22 @@ function revealElements() {
   Array.from(arguments).forEach(elem => elem.classList.remove('hidden'));
 }
 
+function saveUserCoverData(e) {
+  e.preventDefault();
+
+  covers.push(userCover.value);
+  titles.push(userTitle.value);
+  descriptors.push(userDesc1.value);
+  descriptors.push(userDesc2.value);
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 document.addEventListener('onload', updateCover(currentCover));
 randomCoverBtn.addEventListener('click', displayRandomCover);
+homeBtn.addEventListener('click', showHomeView);
 makeNewBtn.addEventListener('click', showFormView);
 viewSavedBtn.addEventListener('click', showSavedView);
-homeBtn.addEventListener('click', showHomeView);
+createNewBookBtn.addEventListener('click', saveUserCoverData);
