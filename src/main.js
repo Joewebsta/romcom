@@ -38,43 +38,26 @@ function displayRandomCover() {
 }
 
 function showFormView() {
-  homeView.classList.add('hidden');
-  formView.classList.remove('hidden');
-  savedView.classList.add('hidden');
-  
-  homeBtn.classList.remove('hidden');
-  randomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
+  hideElements(homeView, savedView, randomCoverBtn, saveCoverBtn);
+  revealElements(formView, homeBtn);
 }
 
 function showHomeView() {
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  
-  homeBtn.classList.add('hidden');
-  randomCoverBtn.classList.remove('hidden');
-  saveCoverBtn.classList.remove('hidden');
+  hideElements(formView, savedView, homeBtn);
+  revealElements(homeView, randomCoverBtn, saveCoverBtn);
 }
 
 function showSavedView() {
-  homeView.classList.add('hidden');
-  formView.classList.add('hidden');
-  savedView.classList.remove('hidden');
-  
-  homeBtn.classList.remove('hidden');
-  randomCoverBtn.classList.add('hidden');
-  saveCoverBtn.classList.add('hidden');
+  hideElements(homeView, formView, randomCoverBtn, saveCoverBtn);
+  revealElements(savedView, homeBtn);
 }
 
-function toggleHidden(){
-  Array.from(arguments).forEach(elem => {
-    if (elem.classList.contains('hidden')) {
-      elem.classList.remove('hidden');
-    } else {
-      elem.classList.add('hidden');
-    }
-  })
+function hideElements() {
+  Array.from(arguments).forEach(elem => elem.classList.add('hidden'));
+}
+
+function revealElements() {
+  Array.from(arguments).forEach(elem => elem.classList.remove('hidden'));
 }
 
 function getRandomIndex(array) {
