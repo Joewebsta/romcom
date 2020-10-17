@@ -5,6 +5,7 @@ let tagline2 = document.querySelector('.js-tagline-2');
 
 let homeView = document.querySelector('.js-home-view');
 let formView = document.querySelector('.js-form-view');
+let savedView = document.querySelector('.js-saved-view');
 
 let homeBtn = document.querySelector('.js-home-button'); 
 let randomCoverBtn = document.querySelector('.js-random-cover-btn'); 
@@ -37,27 +38,33 @@ function displayRandomCover() {
 }
 
 function showFormView() {
-  if (!formView.classList.contains('hidden')) return;
-
-  toggleHidden(
-    homeView, 
-    formView, 
-    homeBtn, 
-    randomCoverBtn, 
-    saveCoverBtn
-  );
+  homeView.classList.add('hidden');
+  formView.classList.remove('hidden');
+  savedView.classList.add('hidden');
+  
+  homeBtn.classList.remove('hidden');
+  randomCoverBtn.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden');
 }
 
 function showHomeView() {
-  if (!homeView.classList.contains('hidden')) return;
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  
+  homeBtn.classList.add('hidden');
+  randomCoverBtn.classList.remove('hidden');
+  saveCoverBtn.classList.remove('hidden');
+}
 
-  toggleHidden(
-    homeView, 
-    formView, 
-    homeBtn, 
-    randomCoverBtn, 
-    saveCoverBtn
-  );
+function showSavedView() {
+  homeView.classList.add('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.remove('hidden');
+  
+  homeBtn.classList.remove('hidden');
+  randomCoverBtn.classList.add('hidden');
+  saveCoverBtn.classList.add('hidden');
 }
 
 function toggleHidden(){
@@ -77,4 +84,5 @@ function getRandomIndex(array) {
 document.addEventListener('onload', updateCover(currentCover));
 randomCoverBtn.addEventListener('click', displayRandomCover);
 makeNewBtn.addEventListener('click', showFormView);
+viewSavedBtn.addEventListener('click', showSavedView);
 homeBtn.addEventListener('click', showHomeView);
