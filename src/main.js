@@ -28,6 +28,8 @@ function selectRandomCoverPropertyVals() {
   let title = titles[getRandomIndex(titles)];
   let descriptor1 = descriptors[getRandomIndex(descriptors)];
   let descriptor2 = descriptors[getRandomIndex(descriptors)];
+
+  return [coverImgSrc, title, descriptor1, descriptor2];
 }
 
 function createCover(coverImgSrc, title, descriptor1, descriptor2) {  
@@ -42,7 +44,8 @@ function updateCover() {
 }
 
 function displayRandomCover() {
-  currentCover = createCover();
+  let coverPropertyVals = selectRandomCoverPropertyVals();
+  currentCover = createCover(...coverPropertyVals);
   updateCover();
 }
 
@@ -101,7 +104,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// document.addEventListener('onload', updateCover(currentCover));
+document.addEventListener('onload', displayRandomCover());
 randomCoverBtn.addEventListener('click', displayRandomCover);
 homeBtn.addEventListener('click', showHomeView);
 makeNewBtn.addEventListener('click', showFormView);
