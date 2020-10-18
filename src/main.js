@@ -21,7 +21,8 @@ let userDesc1 = document.querySelector('.js-user-desc1');
 let userDesc2 = document.querySelector('.js-user-desc2');
 
 let currentCover = createCover();
-let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
+// let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
+let savedCovers = [];
 
 function selectRandomCoverPropertyVals() {
   let coverImgSrc = covers[getRandomIndex(covers)];
@@ -47,7 +48,6 @@ function displayRandomCover() {
   let coverPropertyVals = selectRandomCoverPropertyVals();
   currentCover = createCover(...coverPropertyVals);
   updateCover();
-  console.log(currentCover);
 }
 
 function showFormView() {
@@ -107,11 +107,17 @@ function storeUserCoverData(e) {
 }
 
 function saveCurrentCover() {
+  if (idAlreadyExists()) return;
+  
   savedCovers.push(currentCover);
 }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function idAlreadyExists() {
+  return savedCovers.map(cover => cover.id).includes(currentCover.id)
 }
 
 document.addEventListener('onload', displayRandomCover());
