@@ -14,6 +14,8 @@ let viewSavedBtn = document.querySelector('.js-view-saved-btn');
 let saveCoverBtn = document.querySelector('.js-save-cover-btn');
 let createNewCoverBtn = document.querySelector('.js-create-new-book-btn')
 
+let savedCoversSection = document.querySelector('.js-saved-covers-section');
+
 let newCoverForm = document.querySelector('.js-new-cover-form');
 let userCover = document.querySelector('.js-user-cover');
 let userTitle = document.querySelector('.js-user-title');
@@ -79,7 +81,19 @@ function clearForm() {
 }
 
 function displaySavedCovers() {
-  console.log(savedCovers);
+  let miniCoversHTML = '';
+
+  savedCovers.forEach(cover => {
+    miniCoversHTML += `
+      <section class="mini-cover">
+        <img class="cover-image" src="${cover.cover}">
+        <h2 class="cover-title">${cover.title}</h2>
+        <h3 class="tagline">A tale of ${cover.tagline1} and ${cover.tagline2}</h3>
+      </section>
+    `
+  });
+
+  savedCoversSection.innerHTML = miniCoversHTML;
 }
 
 function createNewCover(e) {
