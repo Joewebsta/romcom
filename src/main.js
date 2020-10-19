@@ -85,7 +85,7 @@ function displaySavedCovers() {
 
   savedCovers.forEach(cover => {
     miniCoversHTML += `
-      <section class="mini-cover">
+      <section class="mini-cover" data-id="${cover.id}">
         <img class="cover-image" src="${cover.cover}">
         <h2 class="cover-title">${cover.title}</h2>
         <h3 class="tagline">A tale of ${cover.tagline1} and ${cover.tagline2}</h3>
@@ -126,6 +126,17 @@ function saveCurrentCover() {
   savedCovers.push(currentCover);
 }
 
+function deleteMiniCover(e) {
+  if (e.currentTarget === e.target) return;
+
+  let miniCover = e.target.parentNode
+  let miniCoverId = miniCover.dataset.id;
+  let miniCoverIdx = savedCovers.findIndex(cover => cover.id === miniCoverId);
+  
+  savedCovers.splice(miniCoverIdx, 1);
+  miniCover.remove();
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -141,5 +152,6 @@ saveCoverBtn.addEventListener('click', saveCurrentCover);
 viewSavedBtn.addEventListener('click', showSavedView);
 makeNewBtn.addEventListener('click', showFormView);
 createNewCoverBtn.addEventListener('click', createNewCover);
+savedCoversSection.addEventListener('dblclick', deleteMiniCover)
 
 // let savedCovers = [new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
